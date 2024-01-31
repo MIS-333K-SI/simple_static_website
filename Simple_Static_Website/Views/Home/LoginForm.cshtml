@@ -1,0 +1,40 @@
+﻿@model LoginViewModel
+@{  Layout = null;}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Welcome! Please Login to Enter the Harry Potter World</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h5 class="bg-dark text-white text-center m-2 p-2">Log in to enter the Harry Potter World</h5>
+        <form asp-action="LoginForm" method="post" class="m-2">
+            <div asp-validation-summary="All"></div>
+            <div class="form-group">
+                <label asp-for="House" class="control-label">Select Your Hogwarts House:</label>
+                <select asp-for="House" asp-items="Html.GetEnumSelectList<House>()" class="form-control"></select>
+                <span asp-validation-for="House" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password">Enter House Secret:</label>
+                <input asp-for="Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Do you solemnly swear that you are up to no good?</label>
+                <select asp-for="Agree" class="form-select">
+                    <option value="">Choose wisely:</option>
+                    <option value="true">Yes</option>
+                    @*<option value="false">No</option>*@
+                </select>
+            </div>
+            <div class="form-group text-center m-2 p-2">
+                <button type="submit" class="btn btn-primary">Enter</button>
+            </div>
+        </form>
+     </div>
+</body>
+</html>
